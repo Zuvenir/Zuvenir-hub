@@ -18,7 +18,7 @@ local Window = OrionLib:MakeWindow({Name = "Zuvenir Script Hub", HidePremium = f
     })
 
     Tab:AddButton({
-        Name = "This hub has 5+ scripts supported!",
+        Name = "This hub has 7+ scripts supported!",
         Callback = function()
                   print("button pressed")
           end    
