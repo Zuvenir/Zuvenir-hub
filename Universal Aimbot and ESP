@@ -1,0 +1,427 @@
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Kronos"))()
+
+local window = library:Window({
+   Title = "Universal Script - By RavenSolutions",
+   Accent = Color3.fromRGB(69,69,207),
+   Logo = 3610245066,
+   ToggleKey = Enum.KeyCode.LeftAlt
+})
+
+local tab = window:NewTab({
+   Logo = 4483345998
+})
+
+local tabsection = tab:TabSection({
+   Title = "Raven Cheats"
+})
+
+local column = tabsection:AddColumn({
+   Title = "Aimbot"
+})
+
+local section = column:Section({
+   Title = "Aimbot And Esp"
+})
+
+local function ToggleAimbot(state)
+    _G.AimbotEnabled = state
+end
+
+local function ToggleESP(state)
+    _G.ESPEnabled = state
+end
+
+local function ToggleTracers(state)
+    _G.TracerEnabled = state
+end
+
+local function ToggleBoneESP(state)
+    _G.BoneESPEnabled = state
+end
+
+local function ToggleDrawFOV(state)
+    _G.CircleVisible = state
+end
+
+local function ChangeTracerColor(color)
+    _G.TracerColor = color
+end
+
+local function ChangeFOV(fov)
+    _G.CircleRadius = fov
+end
+
+
+local function ChangeAimFOVColor(color)
+    _G.CircleColor = color
+end
+
+local function ToggleESPNames(state)
+    _G.ESPNamesEnabled = state
+end
+
+    local function CameraChangeFOV(fov)
+        workspace.CurrentCamera.FieldOfView = fov
+end
+
+
+local function ChangeAimPart(part)
+    if part == "head" then
+        _G.AimPart = "Head"
+    elseif part == "chest" then
+        _G.AimPart = "UpperTorso"
+    else
+        _G.AimPart = part
+    end
+end
+
+
+section:Toggle({
+   Text = "Aim Fov | M2",
+   State = false,
+   Callback = ToggleAimbot
+})
+
+section:Toggle({
+   Text = "Esp Tarcers",
+   State = false,
+   Callback = ToggleTracers
+})
+
+section:Toggle({
+   Text = "Esp Head",
+   State = false,
+   Callback = ToggleBoneESP
+})
+
+section:Toggle({
+   Text = "Esp Names",
+   State = false,
+   Callback = ToggleESPNames
+})
+
+section:Toggle({
+   Text = "Draw Fov",
+   State = false,
+   Callback = ToggleDrawFOV
+})
+
+section:Divide({})
+
+section:Dropdown({
+   Text = "Change Tarcer Color",
+   List = {'Red', 'Black', 'Purple','Green'},
+   Callback = function(value)
+       if value == 'Red' then
+           ChangeTracerColor(Color3.fromRGB(255, 0, 0))
+       elseif value == 'Black' then
+           ChangeTracerColor(Color3.fromRGB(0, 0, 0))
+       elseif value == 'Purple' then
+           ChangeTracerColor(Color3.fromRGB(128, 0, 128))
+       elseif value == 'Green' then
+           ChangeTracerColor(Color3.fromRGB(0, 128, 0))
+       end
+   end
+})
+
+section:Dropdown({
+   Text = "Aim Fov Color",
+   List = {'Red', 'Black', 'Purple','Green'},
+   Callback = function(value)
+       if value == 'Red' then
+           ChangeAimFOVColor(Color3.fromRGB(255, 0, 0))
+       elseif value == 'Black' then
+           ChangeAimFOVColor(Color3.fromRGB(0, 0, 0))
+       elseif value == 'Purple' then
+           ChangeAimFOVColor(Color3.fromRGB(128, 0, 128))
+       elseif value == 'Green' then
+           ChangeAimFOVColor(Color3.fromRGB(0, 128, 0))
+       end
+   end
+})
+
+
+section:Dropdown({
+   Text = "Aim Part",
+   List = {'Head', 'Chest'},
+   Callback = function(value)
+       ChangeAimPart(value:lower())
+   end
+})
+
+section:Slider({
+   Text = "Aim Fov", --fov del aimbot,
+   Min = 0,
+   Max = 120,
+   Def = 50,
+   Callback = ChangeFOV
+})
+
+section:Slider({
+   Text = "Cam Fov",
+   Min = 70,
+   Max = 120,
+   Def = 90,
+   Callback = CameraChangeFOV
+})
+
+
+--AutoFarm Options
+local column = tabsection:AddColumn({
+   Title = "Movement"
+})
+
+local section = column:Section({
+   Title = "Bypass Movement"
+})
+
+-- Aquí va el resto de tu código para la sección "Bypass AutoFarm"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---codes function
+
+local Camera = workspace.CurrentCamera
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local LocalPlayer = Players.LocalPlayer
+local Holding = false
+
+_G.AimbotEnabled = false
+_G.TeamCheck = false
+_G.AimPart = "Head"
+_G.Sensitivity = 0.1
+
+_G.CircleSides = 64
+_G.CircleColor = Color3.fromRGB(135, 0, 116)
+_G.CircleTransparency = 0.7
+_G.CircleRadius = 180
+_G.CircleFilled = false
+_G.CircleVisible = false
+_G.CircleThickness = 0
+
+_G.ESPEnabled = false
+_G.ESPColor = Color3.fromRGB(255, 255, 255)
+_G.ESPTransparency = 0.5
+
+_G.TracerEnabled = false
+_G.TracerColor = Color3.fromRGB(135, 0, 116)
+
+_G.BoneESPEnabled = false
+
+_G.ESPNamesEnabled = false
+
+local FOVCircle = Drawing.new("Circle")
+FOVCircle.Position = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
+FOVCircle.Radius = _G.CircleRadius
+FOVCircle.Filled = _G.CircleFilled
+FOVCircle.Color = _G.CircleColor
+FOVCircle.Visible = _G.CircleVisible
+FOVCircle.Radius = _G.CircleRadius
+FOVCircle.Transparency = _G.CircleTransparency
+FOVCircle.NumSides = _G.CircleSides
+FOVCircle.Thickness = _G.CircleThickness
+
+local ESPTable = {}
+local TracerTable = {}
+local BoneESPTable = {}
+
+local function AngleBetweenVectors(vec1, vec2)
+    return math.acos(vec1:Dot(vec2) / (vec1.Magnitude * vec2.Magnitude)) * (180 / math.pi)
+end
+
+local function GetClosestPlayer()
+    local MaximumDistance = _G.CircleRadius
+    local Target = nil
+
+    for _, v in next, Players:GetPlayers() do
+        if v.Name ~= LocalPlayer.Name then
+            if _G.TeamCheck == true then
+                if v.Team ~= LocalPlayer.Team then
+                    if v.Character ~= nil then
+                        if v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
+                            if v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health ~= 0 then
+                                local ScreenPoint = Camera:WorldToScreenPoint(v.Character:WaitForChild("HumanoidRootPart", math.huge).Position)
+                                local VectorDistance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
+
+                                if VectorDistance < MaximumDistance then
+                                    Target = v
+                                    MaximumDistance = VectorDistance
+                                end
+                            end
+                        end
+                    end
+                end
+            else
+                if v.Character ~= nil then
+                    if v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
+                        if v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health ~= 0 then
+                            local ScreenPoint = Camera:WorldToScreenPoint(v.Character:WaitForChild("HumanoidRootPart", math.huge).Position)
+                            local VectorDistance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
+
+                            if VectorDistance < MaximumDistance then
+                                Target = v
+                                MaximumDistance = VectorDistance
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    return Target
+end
+
+UserInputService.InputBegan:Connect(function(Input)
+    if Input.UserInputType == Enum.UserInputType.MouseButton2 then
+        Holding = true
+    end
+end)
+
+UserInputService.InputEnded:Connect(function(Input)
+    if Input.UserInputType == Enum.UserInputType.MouseButton2 then
+        Holding = false
+    end
+end)
+
+local function UpdateESPNames()
+    for _, Player in ipairs(Players:GetPlayers()) do
+        if Player ~= LocalPlayer and Player.Character and Player.Character:FindFirstChild("HumanoidRootPart") and Player.Character:FindFirstChild("Humanoid") and Player.Character.Humanoid.Health > 0 then
+            local ScreenPoint = Camera:WorldToViewportPoint(Player.Character.HumanoidRootPart.Position)
+            if ScreenPoint then
+                local NameTag = Player.Character:FindFirstChild("NameTag")
+                if not NameTag then
+                    NameTag = Instance.new("TextLabel")
+                    NameTag.Name = "NameTag"
+                    NameTag.Size = UDim2.new(0, 200, 0, 50)
+                    NameTag.BackgroundTransparency = 1
+                    NameTag.Text = Player.Name
+                    NameTag.TextColor3 = _G.ESPColor
+                    NameTag.TextStrokeTransparency = 0.5
+                    NameTag.TextStrokeColor3 = Color3.new(0, 0, 0)
+                    NameTag.Font = Enum.Font.SourceSansBold
+                    NameTag.Position = UDim2.new(ScreenPoint.X, ScreenPoint.Y - 60)
+                    NameTag.ZIndex = 5
+                    NameTag.Parent = game.CoreGui
+                else
+                    NameTag.Position = UDim2.new(ScreenPoint.X, ScreenPoint.Y - 60)
+                end
+            end
+        end
+    end
+end
+
+
+
+RunService.RenderStepped:Connect(function()
+    FOVCircle.Position = Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y)
+    FOVCircle.Radius = _G.CircleRadius
+    FOVCircle.Filled = _G.CircleFilled
+    FOVCircle.Color = _G.CircleColor
+    FOVCircle.Visible = _G.CircleVisible
+    FOVCircle.Radius = _G.CircleRadius
+    FOVCircle.Transparency = _G.CircleTransparency
+    FOVCircle.NumSides = _G.CircleSides
+    FOVCircle.Thickness = _G.CircleThickness
+
+    for _, ESPObject in pairs(ESPTable) do
+        ESPObject:Remove()
+    end
+    ESPTable = {}
+
+    for _, Tracer in pairs(TracerTable) do
+        Tracer:Remove()
+    end
+    TracerTable = {}
+
+    for _, BoneESPObject in pairs(BoneESPTable) do
+        BoneESPObject:Remove()
+    end
+    BoneESPTable = {}
+
+    for _, Player in ipairs(Players:GetPlayers()) do
+        if Player ~= LocalPlayer and Player.Character and Player.Character:FindFirstChild("HumanoidRootPart") and Player.Character:FindFirstChild("Humanoid") and Player.Character.Humanoid.Health > 0 then
+            local DirectionToPlayer = (Player.Character.HumanoidRootPart.Position - Camera.CFrame.Position).unit
+            local CameraForward = Camera.CFrame.LookVector
+            local AngleToPlayer = AngleBetweenVectors(DirectionToPlayer, CameraForward)
+
+            if AngleToPlayer <= 90 then
+                if _G.ESPEnabled then
+                    local ScreenPoint = Camera:WorldToViewportPoint(Player.Character.HumanoidRootPart.Position)
+                    if ScreenPoint then
+                        local Distance = (Camera.CFrame.Position - Player.Character.HumanoidRootPart.Position).Magnitude
+                        local NameTag = Drawing.new("Text")
+                        NameTag.Text = Player.Name
+                        NameTag.Size = 18
+                        NameTag.Position = Vector2.new(ScreenPoint.X, ScreenPoint.Y - 60)
+                        NameTag.Color = _G.ESPColor
+                        NameTag.Transparency = _G.ESPTransparency
+                        NameTag.Visible = true
+                        NameTag.Outline = true
+                        NameTag.Center = true
+                        table.insert(ESPTable, NameTag)
+                    end
+                end
+
+                if _G.TracerEnabled then
+                    local ScreenPoint = Camera:WorldToViewportPoint(Player.Character.HumanoidRootPart.Position)
+                    if ScreenPoint then
+                        local TracerLine = Drawing.new("Line")
+                        TracerLine.From = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y)
+                        TracerLine.To = Vector2.new(ScreenPoint.X, ScreenPoint.Y)
+                        TracerLine.Color = _G.TracerColor
+                        TracerLine.Thickness = 2
+                        TracerLine.Transparency = _G.ESPTransparency
+                        TracerLine.Visible = true
+                        table.insert(TracerTable, TracerLine)
+                    end
+                end
+
+                if _G.BoneESPEnabled then
+                    local HeadPosition, Visible = Camera:WorldToViewportPoint(Player.Character.Head.Position)
+                    if Visible then
+                        local HeadESP = Drawing.new("Circle")
+                        HeadESP.Position = Vector2.new(HeadPosition.X, HeadPosition.Y)
+                        HeadESP.Radius = 5
+                        HeadESP.Color = _G.ESPColor
+                        HeadESP.Transparency = _G.ESPTransparency
+                        HeadESP.Filled = true
+                        HeadESP.Visible = true
+                        table.insert(BoneESPTable, HeadESP)
+                    end
+                end
+            end
+        end
+    end
+
+    if Holding == true and _G.AimbotEnabled == true then
+        local closestPlayer = GetClosestPlayer()
+        if closestPlayer then
+            TweenService:Create(Camera, TweenInfo.new(_G.Sensitivity, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {CFrame = CFrame.new(Camera.CFrame.Position, closestPlayer.Character[_G.AimPart].Position)}):Play()
+        end
+    end
+
+    if _G.ESPNamesEnabled then
+        UpdateESPNames()
+    end
+end)
