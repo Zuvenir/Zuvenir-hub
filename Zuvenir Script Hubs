@@ -1,137 +1,220 @@
-LocalPlayer = game.Players.LocalPlayer
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({ Name = "Zuvenir Script Hub V1.01", HidePremium = false, introtext = true, SaveConfig = true, ConfigFolder = "OrionTest" })
-
-// Loadstring version here -> loadstring(game:HttpGet(('https://raw.githubusercontent.com/Zuvenir/Zuvenir-hub/main/Zuvenir%20Script%20Hubs')))()
-
-local Tab = Window : MakeTab({
-    Name = "Welcome",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-    })
+        LocalPlayer = game.Players.LocalPlayer
+        local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+        local Window = OrionLib:MakeWindow({ Name = "Zuvenir Script Hub V1.01", HidePremium = false, introtext = true, SaveConfig = true, ConfigFolder = "OrionTest" })
 
 
-    Tab : AddLabel("Welcome to Zuvenir Script Hub!")
 
-    Tab : AddLabel("This script Hub has 7+ Scripts and 4+ games supported ")
+        local Tab = Window : MakeTab({
+            Name = "Welcome",
+            Icon = "rbxassetid://4483345998",
+            PremiumOnly = false
+            })
 
-    Tab : AddLabel("Update: Made the gui brand new and added new scripts")
+
+            Tab : AddLabel("Welcome to Zuvenir Script Hub!")
+            Tab : AddLabel("This script Hub has 15+ Scripts and 8+ games supported ")
+            Tab : AddLabel("Update: Made the gui brand new and added new scripts")
+            Tab : AddLabel("Note: These scripts are tested on solara V3.1")
 
 
     
 
-    local Tab = Window:MakeTab({
-        Name = "a dusty trip",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-        })
+            local Tab = Window:MakeTab({
+                Name = "a dusty trip",
+                Icon = "rbxassetid://4483345998",
+                PremiumOnly = false
+                })
 
-    Tab : AddButton({
-        Name = "Dusty Trip by Nocturnal, vzyat (REMOVES SCRIPT HUB UI)",
-        Callback = function()
-                  print("button pressed")
-                  loadstring(game:HttpGet("https://raw.githubusercontent.com/artemy133563/Utilities/main/ADustyTrip",true))()
-          end
-        })
+            Tab : AddButton({
+                Name = "Dusty Trip by Nocturnal, vzyat (REMOVES SCRIPT HUB UI)",
+                Callback = function()
+                          print("button pressed")
+                          loadstring(game:HttpGet("https://raw.githubusercontent.com/artemy133563/Utilities/main/ADustyTrip",true))()
+                  end
+                })
 
-    Tab : AddButton({
-    Name = "a dusty trip V1 by Thac",
-    Callback = function()
-              print("button pressed")
-              autoExecuteScript = true
+            Tab : AddButton({
+            Name = "a dusty trip V1 by Thac",
+            Callback = function()
+                      print("button pressed")
+                      autoExecuteScript = true
 
-              loadstring(game:HttpGet("https://raw.githubusercontent.com/ThacG/DustyTripThac/main/dustytripthac"))()
-      end
-        })
+                      loadstring(game:HttpGet("https://raw.githubusercontent.com/ThacG/DustyTripThac/main/dustytripthac"))()
+              end
+                })
 
-    local Tab = Window:MakeTab({
-        Name = "Colony Survival",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-        })
+            local Tab = Window:MakeTab({
+                Name = "Colony Survival",
+                Icon = "rbxassetid://4483345998",
+                PremiumOnly = false
+                })
 
-    Tab : AddButton({
-    Name = "Colony Survival by SkyHub",
-    Callback = function()
-              print("button pressed")
+            Tab : AddButton({
+            Name = "Colony Survival by SkyHub",
+            Callback = function()
+                      print("button pressed")
               
-                 loadstring(game:HttpGet("https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub/main/SkyHub.txt"))()
-      end
-        })
+                         loadstring(game:HttpGet("https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub/main/SkyHub.txt"))()
+              end
+                })
 
-    local Tab = Window:MakeTab({
-        Name = "Admin Commands",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-        })
+            local Tab = Window:MakeTab({
+                Name = "Admin Commands",
+                Icon = "rbxassetid://4483345998",
+                PremiumOnly = false
+                })
 
-    Tab : AddButton({
-        Name = "Infinite Yield by EdgeIY",
-        Callback = function()
-                  print("button pressed")
-                  loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-          end
-        })
+            Tab : AddButton({
+                Name = "Infinite Yield by EdgeIY",
+                Callback = function()
+                          print("button pressed")
+                          loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+                  end
+                })
 
-    local Tab = Window:MakeTab({
-        Name = "HELLMET",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-        })
+            Tab : AddButton({
+                Name = "CMD V1",
+                Callback = function()
+                          print("button pressed")
+                          loadstring(game:HttpGet("https://raw.githubusercontent.com/quivings/KAH/main/CMD%20v1.lua"))()
+                  end
+                })
+
+            Tab : AddButton({
+                Name = "CMD-Y",
+                Callback = function()
+                          print("button pressed")
+                          loadstring(game:HttpGet("https://raw.githubusercontent.com/quivings/KAH/main/CMD-Y%20(v1.56).lua"))()
+                  end
+                })
+
+            Tab : AddButton({
+               Name = "CMD V3",
+               Callback = function()
+                         print("button pressed")
+                         loadstring(game:HttpGet("https://raw.githubusercontent.com/quivings/KAH/main/CMD%20v3.lua"))()
+                 end
+                })
+
+            local Tab = Window:MakeTab({
+                Name = "HELLMET",
+                Icon = "rbxassetid://4483345998",
+                PremiumOnly = false
+                })
 
 
-    Tab : AddButton({
-        Name = "HELLMET by penotrat0r",
-        Callback = function()
-                  print("button pressed")
-                  loadstring(game:HttpGet("https://raw.githubusercontent.com/penotrat0r/Hellmet/main/main.lua", true))()
-          end
-        })
+            Tab : AddButton({
+                Name = "HELLMET by penotrat0r",
+                Callback = function()
+                          print("button pressed")
+                          loadstring(game:HttpGet("https://raw.githubusercontent.com/penotrat0r/Hellmet/main/main.lua", true))()
+                  end
+                })
 
-    local Tab = Window:MakeTab({
-        Name = "ESP and Aimbot",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-        })
+            local Tab = Window:MakeTab({
+                Name = "ESP and Aimbot",
+                Icon = "rbxassetid://4483345998",
+                PremiumOnly = false
+                })
 
-    Tab : AddButton({
-       Name = "Aimbot & ESP by AirHub",
-       Callback = function()
-                 print("button pressed")
-                 loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/AirHub/main/AirHub.lua"))()
-         end
-        })
+            Tab : AddButton({
+               Name = "Aimbot & ESP by AirHub",
+               Callback = function()
+                         print("button pressed")
+                         loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/AirHub/main/AirHub.lua"))()
+                 end
+                })
 
-    local Tab = Window:MakeTab({
-        Name = "Area 51",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-        })
+                Tab : AddButton({
+               Name = "Universal Aimbot",
+               Callback = function()
+                         print("button pressed")
+                         loadstring(game:HttpGet("https://raw.githubusercontent.com/x39qc/MyRobloxScripts/main/Universal%20Aimbot%20(LEFT%20SHIFT)"))()
+                 end
+                    })
 
-    Tab : AddButton({
-        Name = "Area 51 by JayH4x",
-        Callback = function()
-                  print("button pressed")
-                  loadstring(game:HttpGet("https://raw.githubusercontent.com/JayH4x/NexxorsScripts/main/VoyagerX.lua"))()
-          end
-        })
+            local Tab = Window:MakeTab({
+                Name = "Area 51",
+                Icon = "rbxassetid://4483345998",
+                PremiumOnly = false
+                })
 
-        local Tab = Window:MakeTab({
-        Name = "More coming soon..",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-            })
+            Tab : AddButton({
+                Name = "Area 51 by JayH4x",
+                Callback = function()
+                          print("button pressed")
+                          loadstring(game:HttpGet("https://raw.githubusercontent.com/JayH4x/NexxorsScripts/main/VoyagerX.lua"))()
+                  end
+                })
 
-          
+                local Tab = Window:MakeTab({
+                Name = "Arsenal",
+                Icon = "rbxassetid://4483345998",
+                PremiumOnly = false
+                    })
 
-        local Tab = Window:MakeTab({
-        Name = "Credits",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-            })
+                    Tab : AddButton({
+                Name = "Arsenal by Leg Hub",
+                Callback = function()
+                          print("button pressed")
+                          loadstring(game:HttpGet("https://raw.githubusercontent.com/cris123452/my/main/cas",true))()
+                  end
+                        })
 
-                      Tab : AddLabel("Made by Zuvenir")
+                    local Tab = Window:MakeTab({
+                      Name = "Blox Fruits",
+                      Icon = "rbxassetid://4483345998",
+                      PremiumOnly = false
+                        })
 
-        OrionLib : Init()
+                Tab : AddButton({
+                Name = "Blox Fruits Autofarm by Winter Hub",
+                Callback = function()
+                          print("button pressed")
+                          loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiSupremacy/Loader.xyz/main/Loader.Blurk%20ST%20%3A%20G"))()
+                  end
+                    })
+
+                 Tab : AddLabel("Key for Winter Hub: xk06nst6bgj8a")
+
+                      local Tab = Window : MakeTab({
+                      Name = "Bee Swarm Simulator",
+                      Icon = "rbxassetid://4483345998",
+                      PremiumOnly = false
+                          })
+
+                              Tab : AddButton({
+                        Name = "Bee Swarm Simulator by Histy",
+                        Callback = function()
+                                  print("button pressed")
+                                  loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptpastebin/raw/main/Histy"))()
+                          end
+                                  })
+
+                       local Tab = Window:MakeTab({
+                Name = "Wings Of Glory",
+                Icon = "rbxassetid://4483345998",
+                PremiumOnly = false
+                                 })
+
+                    Tab : AddButton({
+                Name = "Wings of Glory Hitbox Expander",
+                Callback = function()
+                          print("button pressed")
+                          loadstring(game:HttpGet("https://raw.githubusercontent.com/miodkosz/ROBLOX/main/wings%20of%20glory%20hitbox",true))()
+                  end
+  
+                        })
+
+                local Tab = Window:MakeTab({
+                Name = "Credits",
+                Icon = "rbxassetid://4483345998",
+                PremiumOnly = false
+                    })
+
+                              Tab : AddLabel("Made by Zuvenir")
+                              Tab : AddLabel("Private Zuvenir hub =)")
+
+                OrionLib : Init()
 
 
