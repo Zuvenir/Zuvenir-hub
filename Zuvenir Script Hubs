@@ -2,7 +2,7 @@ LocalPlayer = game.Players.LocalPlayer
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({ Name = "Zuvenir Script Hub V1.01", HidePremium = false, introtext = true, SaveConfig = true, ConfigFolder = "OrionTest" })
 
-
+// Loadstring version here -> loadstring(game:HttpGet(('https://raw.githubusercontent.com/Zuvenir/Zuvenir-hub/main/Zuvenir%20Script%20Hubs')))()
 
 local Tab = Window : MakeTab({
     Name = "Welcome",
