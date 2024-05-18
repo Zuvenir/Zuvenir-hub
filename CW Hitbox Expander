@@ -1,5 +1,5 @@
-// Script made by Lynx.
-// This only works in bows and kunai. 
+-- Script made by Lynx.
+-- zThis only works in bows and kunai. 
 
 _G.HeadSize = 7
 _G.Disabled = true
