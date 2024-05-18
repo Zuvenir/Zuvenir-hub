@@ -206,11 +206,27 @@
   
                         })
 
+local Tab = Window:MakeTab({
+                Name = "Combat Warriors",
+                Icon = "rbxassetid://4483345998",
+                PremiumOnly = false
+                    })
+
+
+Tab : AddButton({
+                Name = "Hitbox Expander",
+                Callback = function()
+                          print("button pressed")
+                          loadstring(game:HttpGet("https://raw.githubusercontent.com/Zuvenir/Zuvenir-hub/main/CW%20Hitbox%20Expander",true))()
+                  end
+  
+
                 local Tab = Window:MakeTab({
                 Name = "Credits",
                 Icon = "rbxassetid://4483345998",
                 PremiumOnly = false
                     })
+
 
                               Tab : AddLabel("Made by Zuvenir")
                               Tab : AddLabel("Private Zuvenir hub =)")
